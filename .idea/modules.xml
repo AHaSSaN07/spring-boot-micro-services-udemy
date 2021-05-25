@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/APIGateway/APIGateway.iml" filepath="$PROJECT_DIR$/APIGateway/APIGateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AccoutMangmentMicroService/AccoutMangmentMicroService.iml" filepath="$PROJECT_DIR$/AccoutMangmentMicroService/AccoutMangmentMicroService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UsersMicroService/UsersMicroService.iml" filepath="$PROJECT_DIR$/UsersMicroService/UsersMicroService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/spring-boot-micro-services-udemy.iml" filepath="$PROJECT_DIR$/.idea/spring-boot-micro-services-udemy.iml" />
+    </modules>
+  </component>
+</project>

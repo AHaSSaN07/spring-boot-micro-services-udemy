@@ -48,6 +48,10 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

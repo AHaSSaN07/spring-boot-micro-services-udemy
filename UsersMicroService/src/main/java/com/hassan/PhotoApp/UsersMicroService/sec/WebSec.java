@@ -11,7 +11,12 @@ public class WebSec extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/users/**").permitAll();
+        http.authorizeRequests().antMatchers("/users/**").permitAll().and().addFilter(getAuthFilter());
         http.headers().frameOptions().disable();
+    }
+    private AuthFilter getAuthFilter() throws Exception{
+        AuthFilter filter = new AuthFilter();
+        filter.setAuthenticationManager(authenticationManager());
+        return filter;
     }
 }

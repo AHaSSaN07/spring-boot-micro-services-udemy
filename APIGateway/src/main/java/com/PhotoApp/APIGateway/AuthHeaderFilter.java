@@ -61,7 +61,7 @@ public class AuthHeaderFilter extends AbstractGatewayFilterFactory {
                     .parseClaimsJws(jwt)
                     .getBody().getSubject();
         } catch (Exception e) {
-                return false;
+            return false;
         }
         return (subject == null || subject.isEmpty()) ? false : true;
     }

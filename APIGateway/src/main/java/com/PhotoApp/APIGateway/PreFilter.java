@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 import java.util.Set;
 
 
-@Component
+//@Component
 public class PreFilter implements GlobalFilter {
 
     Logger logger = LoggerFactory.getLogger(PreFilter.class);

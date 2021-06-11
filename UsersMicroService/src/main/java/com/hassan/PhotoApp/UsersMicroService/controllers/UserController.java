@@ -29,9 +29,8 @@ public class UserController {
 
     @GetMapping("/status/check")
     public String status() {
-        return "working " + environment.getProperty("local.server.port") +"with token "+ environment.getProperty("token.secret");
+        return "working " + environment.getProperty("local.server.port") + "with token " + environment.getProperty("token.secret");
     }
-
 
     @PostMapping(
             consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
@@ -44,6 +43,19 @@ public class UserController {
         UserDTO addedUser = this.userService.createUser(userDTO);
         return new ResponseEntity(modelMapper.map(addedUser, UserResponseModel.class), HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/{userId}", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity getUsers(@PathVariable("userId") String userId){
+        ModelMapper modelMapper = new ModelMapper();
+        UserDTO user = userService.getUserByUserId(userId);
+        return new ResponseEntity(modelMapper.map(user, UserResponseModel.class),HttpStatus.OK);
+    }
+
+
+
+
+
 
 
 }

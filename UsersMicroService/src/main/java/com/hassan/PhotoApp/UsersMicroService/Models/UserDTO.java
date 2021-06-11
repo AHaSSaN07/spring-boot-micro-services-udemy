@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 //contains user details to be moved among different layers
 public class UserDTO implements Serializable {
@@ -24,6 +25,16 @@ public class UserDTO implements Serializable {
     private String userID;
 
     private String encryptedPassword;
+
+    private List<AlbumResponseModel> albums;
+
+    public List<AlbumResponseModel> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<AlbumResponseModel> albums) {
+        this.albums = albums;
+    }
 
     public String getFirstName() {
         return firstName;

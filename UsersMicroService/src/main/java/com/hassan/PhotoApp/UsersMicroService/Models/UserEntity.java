@@ -3,6 +3,7 @@ package com.hassan.PhotoApp.UsersMicroService.Models;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -30,6 +31,10 @@ public class UserEntity implements Serializable {
 
     @Column(nullable = false,unique = false)
     private String encryptedPassword;
+
+    //private List<AlbumResponseModel> albums;
+
+
 
     public long getId() {
         return id;

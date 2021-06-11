@@ -5,10 +5,14 @@ import com.hassan.PhotoApp.UsersMicroService.Models.AlbumsServiceClient;
 import com.hassan.PhotoApp.UsersMicroService.Models.UserDTO;
 import com.hassan.PhotoApp.UsersMicroService.Models.UserEntity;
 import com.hassan.PhotoApp.UsersMicroService.Repos.UsersRepo;
+import feign.FeignException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.openfeign.hateoas.FeignHalAutoConfiguration;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
@@ -34,6 +38,7 @@ public class UserServiceImpl implements UserService {
     BCryptPasswordEncoder bCryptPasswordEncoder;
     Environment environment;
     AlbumsServiceClient albumsServiceClient;
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     UserServiceImpl(UsersRepo usersRepo, BCryptPasswordEncoder bCryptPasswordEncoder,RestTemplate restTemplate,
@@ -73,11 +78,14 @@ public class UserServiceImpl implements UserService {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Type","application/json");
-
-
-        List<AlbumResponseModel> response = albumsServiceClient.getAlbums(userId,httpHeaders);
         UserDTO returnUSer = new ModelMapper().map(user,UserDTO.class);
-        returnUSer.setAlbums(response);
+        try {
+            List<AlbumResponseModel> response = albumsServiceClient.getAlbums(userId,httpHeaders);
+            returnUSer.setAlbums(response);
+        }
+        catch (FeignException e){
+            logger.info(e.getMessage());
+        }
         return returnUSer;
     }
 

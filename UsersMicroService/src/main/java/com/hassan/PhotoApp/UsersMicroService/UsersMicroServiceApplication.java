@@ -1,5 +1,6 @@
 package com.hassan.PhotoApp.UsersMicroService;
 
+import feign.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -27,5 +28,10 @@ public class UsersMicroServiceApplication {
 	@LoadBalanced
 	public RestTemplate getRestTemplate(){
 		return new RestTemplate();
+	}
+
+	@Bean
+	Logger.Level feignLogger(){
+		return Logger.Level.FULL;
 	}
 }

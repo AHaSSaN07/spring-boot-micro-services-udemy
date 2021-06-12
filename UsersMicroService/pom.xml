@@ -97,7 +97,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-hystrix -->
 
     </dependencies>
     <dependencyManagement>
@@ -113,7 +113,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
 
 
         </dependencies>

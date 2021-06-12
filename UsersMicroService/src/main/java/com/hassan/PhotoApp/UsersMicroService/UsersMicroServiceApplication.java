@@ -46,14 +46,14 @@ public class UsersMicroServiceApplication {
     @Bean
     @Profile("production")
     public String createProdBean() {
-		System.out.println("crated production bean wth env : " + environment.getProperty("myapp.env"));
+		System.out.println("created production bean wth env : " + environment.getProperty("myapp.env"));
         return "production bean";
     }
 
     @Bean
     @Profile("default")
     public String createDevBean() {
-		System.out.println("crated dev bean wth env : " + environment.getProperty("myapp.env"));
+		System.out.println("created dev bean wth env : " + environment.getProperty("myapp.env"));
 
 		return "production bean";
     }
